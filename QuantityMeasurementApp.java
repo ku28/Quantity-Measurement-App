@@ -1,7 +1,9 @@
 public class QuantityMeasurementApp {
     public enum LengthUnit {
         FEET(1.0),
-        INCHES(1.0 / 12.0);
+        INCHES(1.0 / 12.0),
+        YARDS(3.0),
+        CENTIMETERS(0.393701 / 12.0);
 
         private final double toFeetFactor;
 
@@ -23,6 +25,12 @@ public class QuantityMeasurementApp {
             }
             if (normalized.equals("INCH") || normalized.equals("INCHES")) {
                 return INCHES;
+            }
+            if (normalized.equals("YARD") || normalized.equals("YARDS") || normalized.equals("YD")) {
+                return YARDS;
+            }
+            if (normalized.equals("CENTIMETER") || normalized.equals("CENTIMETERS") || normalized.equals("CM")) {
+                return CENTIMETERS;
             }
             throw new IllegalArgumentException("Unsupported unit: " + unitText);
         }
@@ -101,9 +109,32 @@ public class QuantityMeasurementApp {
         System.out.println("Are 1 foot and 12 inches equal? " + obj1.equals(obj2));
     }
 
+    public static void demonstrateExtendedUnitSupport() {
+        Length yardVsFeet1 = new Length(1.0, LengthUnit.YARDS);
+        Length yardVsFeet2 = new Length(3.0, LengthUnit.FEET);
+        System.out.println("Are 1 yard and 3 feet equal? " + yardVsFeet1.equals(yardVsFeet2));
+
+        Length yardVsInch1 = new Length(1.0, LengthUnit.YARDS);
+        Length yardVsInch2 = new Length(36.0, LengthUnit.INCHES);
+        System.out.println("Are 1 yard and 36 inches equal? " + yardVsInch1.equals(yardVsInch2));
+
+        Length yardVsYard1 = new Length(2.0, LengthUnit.YARDS);
+        Length yardVsYard2 = new Length(2.0, "yard");
+        System.out.println("Are 2 yards and 2 yards equal? " + yardVsYard1.equals(yardVsYard2));
+
+        Length cmVsCm1 = new Length(2.0, LengthUnit.CENTIMETERS);
+        Length cmVsCm2 = new Length(2.0, "cm");
+        System.out.println("Are 2 cm and 2 cm equal? " + cmVsCm1.equals(cmVsCm2));
+
+        Length cmVsInch1 = new Length(1.0, LengthUnit.CENTIMETERS);
+        Length cmVsInch2 = new Length(0.393701, LengthUnit.INCHES);
+        System.out.println("Are 1 cm and 0.393701 inches equal? " + cmVsInch1.equals(cmVsInch2));
+    }
+
     public static void main(String[] args) {
         demonstrateFeetEquality();
         demonstrateInchesEquality();
         demonstrateFeetInchesComparison();
+        demonstrateExtendedUnitSupport();
     }
 }
