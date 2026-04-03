@@ -1,3 +1,5 @@
+package com.app.quantitymeasurement.entity;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -51,6 +53,17 @@ public final class QuantityMeasurementEntity implements Serializable {
 
     public static QuantityMeasurementEntity error(String operation, QuantityDTO left, QuantityDTO right, String errorMessage) {
         return new QuantityMeasurementEntity(left, right, operation, null, null, null, true, errorMessage);
+    }
+
+    public static QuantityMeasurementEntity restored(QuantityDTO thisQuantity,
+                                                     QuantityDTO thatQuantity,
+                                                     String operation,
+                                                     QuantityDTO resultQuantity,
+                                                     Boolean comparisonResult,
+                                                     Double divisionResult,
+                                                     boolean error,
+                                                     String errorMessage) {
+        return new QuantityMeasurementEntity(thisQuantity, thatQuantity, operation, resultQuantity, comparisonResult, divisionResult, error, errorMessage);
     }
 
     public QuantityDTO getThisQuantity() {
@@ -123,3 +136,4 @@ public final class QuantityMeasurementEntity implements Serializable {
         return "QuantityMeasurementEntity[operation=" + operation + ", result=" + resultQuantity + "]";
     }
 }
+

@@ -1,3 +1,7 @@
+package com.app.quantitymeasurement.entity;
+
+import com.app.quantitymeasurement.unit.IMeasurable;
+
 public final class QuantityModel<U extends IMeasurable> {
     private final double value;
     private final U unit;
@@ -26,3 +30,4 @@ public final class QuantityModel<U extends IMeasurable> {
         return "QuantityModel[value=" + value + ", unit=" + unit.getUnitName() + "]";
     }
 }
+

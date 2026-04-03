@@ -1,3 +1,7 @@
+package com.app.quantitymeasurement.service;
+
+import com.app.quantitymeasurement.entity.QuantityDTO;
+
 public interface IQuantityMeasurementService {
     boolean compare(QuantityDTO thisQuantityDTO, QuantityDTO thatQuantityDTO);
 
@@ -13,3 +17,4 @@ public interface IQuantityMeasurementService {
 
     double divide(QuantityDTO thisQuantityDTO, QuantityDTO thatQuantityDTO);
 }
+

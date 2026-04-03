@@ -1,3 +1,5 @@
+package com.app.quantitymeasurement.unit;
+
 public interface IMeasurable {
     SupportsArithmetic DEFAULT_SUPPORTS_ARITHMETIC = () -> true;
 
@@ -27,3 +29,4 @@ public interface IMeasurable {
         }
     }
 }
+

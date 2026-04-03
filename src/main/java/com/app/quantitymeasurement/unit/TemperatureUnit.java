@@ -1,3 +1,5 @@
+package com.app.quantitymeasurement.unit;
+
 import java.util.function.Function;
 
 public enum TemperatureUnit implements IMeasurable {
@@ -77,12 +79,8 @@ public enum TemperatureUnit implements IMeasurable {
     }
 
     @Override
-    public String getMeasurementType() {
-        return getClass().getSimpleName();
-    }
-
-    @Override
     public IMeasurable getUnitInstance(String unitName) {
         return from(unitName);
     }
 }
+

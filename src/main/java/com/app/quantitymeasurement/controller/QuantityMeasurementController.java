@@ -1,3 +1,8 @@
+package com.app.quantitymeasurement.controller;
+
+import com.app.quantitymeasurement.entity.QuantityDTO;
+import com.app.quantitymeasurement.service.IQuantityMeasurementService;
+
 public final class QuantityMeasurementController {
     private final IQuantityMeasurementService quantityMeasurementService;
 
@@ -36,3 +41,4 @@ public final class QuantityMeasurementController {
         return quantityMeasurementService.divide(thisQuantityDTO, thatQuantityDTO);
     }
 }
+

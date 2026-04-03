@@ -1,3 +1,5 @@
+package com.app.quantitymeasurement.unit;
+
 public enum VolumeUnit implements IMeasurable {
     LITRE(1.0),
     MILLILITRE(0.001),
@@ -43,12 +45,10 @@ public enum VolumeUnit implements IMeasurable {
             throw new IllegalArgumentException("Unit cannot be null");
         }
         String normalized = unitText.trim().toUpperCase();
-        if (normalized.equals("L") || normalized.equals("LITRE") || normalized.equals("LITRES")
-                || normalized.equals("LITER") || normalized.equals("LITERS")) {
+        if (normalized.equals("L") || normalized.equals("LITRE") || normalized.equals("LITRES") || normalized.equals("LITER") || normalized.equals("LITERS")) {
             return LITRE;
         }
-        if (normalized.equals("ML") || normalized.equals("MILLILITRE") || normalized.equals("MILLILITRES")
-                || normalized.equals("MILLILITER") || normalized.equals("MILLILITERS")) {
+        if (normalized.equals("ML") || normalized.equals("MILLILITRE") || normalized.equals("MILLILITRES") || normalized.equals("MILLILITER") || normalized.equals("MILLILITERS")) {
             return MILLILITRE;
         }
         if (normalized.equals("GAL") || normalized.equals("GALLON") || normalized.equals("GALLONS")) {
@@ -63,12 +63,8 @@ public enum VolumeUnit implements IMeasurable {
     }
 
     @Override
-    public String getMeasurementType() {
-        return getClass().getSimpleName();
-    }
-
-    @Override
     public IMeasurable getUnitInstance(String unitName) {
         return from(unitName);
     }
 }
+

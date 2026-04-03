@@ -1,3 +1,7 @@
+package com.app.quantitymeasurement.entity;
+
+import com.app.quantitymeasurement.unit.IMeasurable;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -50,9 +54,7 @@ public final class QuantityDTO implements Serializable {
             return false;
         }
         QuantityDTO other = (QuantityDTO) obj;
-        return Double.compare(value, other.value) == 0
-                && unitName.equals(other.unitName)
-                && measurementType.equals(other.measurementType);
+        return Double.compare(value, other.value) == 0 && unitName.equals(other.unitName) && measurementType.equals(other.measurementType);
     }
 
     @Override
@@ -65,3 +67,4 @@ public final class QuantityDTO implements Serializable {
         return "QuantityDTO[value=" + value + ", unitName=" + unitName + ", measurementType=" + measurementType + "]";
     }
 }
+
